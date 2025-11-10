@@ -1,5 +1,5 @@
 def main():
-    print("Hello from mario-rl-demo!")
+    print("Hello from rl-demo!")
 
 
 if __name__ == "__main__":
