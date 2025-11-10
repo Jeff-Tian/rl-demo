@@ -3,6 +3,7 @@ from .memory import Memory
 from .ppo import PPO
 import torch
 from .agent import PlayerAgent
+from .device import deault_device
 
 def main():
     ############## Hyperparameters ##############
@@ -26,7 +27,7 @@ def main():
     eps_clip = 0.2              # clip parameter for PPO
     random_seed = None
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = deault_device
     #############################################
     
     if random_seed:

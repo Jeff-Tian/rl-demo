@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-cpu = [
+default = [
   "torch==2.9.0",
   "torchvision==0.24.0",
 ]
@@ -34,26 +34,25 @@ cuda = [
 [tool.uv]
 conflicts = [
     [
-      { extra = "cpu" },
+      { extra = "default" },
       { extra = "cuda" },
     ],
 ]
 
 [tool.uv.sources]
 torch = [
-  { index = "torch-cpu", extra = "cpu" },
-  { index = "torch-gpu", extra = "cuda" },
+  { index = "default", extra = "default" },
+  { index = "torch-cuda", extra = "cuda" },
 ]
 torchvision = [
-  { index = "torch-cpu", extra = "cpu" },
-  { index = "torch-gpu", extra = "cuda" },
+  { index = "default", extra = "default" },
+  { index = "torch-cuda", extra = "cuda" },
 ]
 
 [[tool.uv.index]]
-name = "torch-cpu"
-url = "https://mirrors.nju.edu.cn/pytorch/whl/cpu"
+name = "default"
+url = "https://mirror.nju.edu.cn/pypi/web/simple"
 
 [[tool.uv.index]]
-name = "torch-gpu"
+name = "torch-cuda"
 url = "https://mirrors.nju.edu.cn/pytorch/whl/cu130"
-

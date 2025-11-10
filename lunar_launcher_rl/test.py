@@ -1,8 +1,8 @@
 import gymnasium as gym
 from .memory import Memory
-from PIL import Image
 import torch
 from .agent import PlayerAgent
+from .device import deault_device
 
 def test():
     ############## Hyperparameters ##############
@@ -14,7 +14,8 @@ def test():
     max_timesteps = 300
     n_latent_var = 64           # number of variables in hidden layer
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = deault_device
+    
     #############################################
 
     n_episodes = 3
