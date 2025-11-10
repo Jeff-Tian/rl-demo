@@ -28,6 +28,8 @@ def main():
     random_seed = None
 
     device = deault_device
+
+    print("Using device:", device)
     #############################################
     
     if random_seed:
@@ -70,8 +72,9 @@ def main():
                 timestep = 0
             
             running_reward += reward
+            # print("Episode:", i_episode, "Timestep:", t, "Reward:", reward)
 
-            if terminated or truncated:
+            if terminated:
                 break
                 
         avg_length += t
@@ -86,9 +89,9 @@ def main():
         # logging
         if i_episode % log_interval == 0: # 每迭代20次打印一次
             avg_length = int(avg_length/log_interval)
-            running_reward = int((running_reward/log_interval))
+            avg_running_reward = int((running_reward/log_interval))
             
-            print('Episode {} \t avg length: {} \t reward: {}'.format(i_episode, avg_length, running_reward))
+            print('Episode {} \t avg length: {} \t avg reward: {} \t total reward: {}'.format(i_episode, avg_length, avg_running_reward, running_reward))
             running_reward = 0
             avg_length = 0
 

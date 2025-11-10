@@ -1,9 +1,9 @@
-from .model import ActorCritic
 import torch
 import torch.nn as nn
+from .agent import PlayerAgent
 
 class PPO:
-    def __init__(self, agent, lr, betas, gamma, K_epochs, eps_clip, device="cpu"):
+    def __init__(self, agent: PlayerAgent, lr, betas, gamma, K_epochs, eps_clip, device="cpu"):
         self.lr = lr
         self.betas = betas
         self.gamma = gamma
@@ -46,7 +46,7 @@ class PPO:
         # Optimize policy for K epochs:
         for _ in range(self.K_epochs):
             # Evaluating old actions and values :
-            logprobs, state_values, dist_entropy = self.agent.evaluate(old_states, old_actions,policy=self.policy)
+            logprobs, state_values, dist_entropy = self.agent.evaluate(old_states, old_actions, policy=self.policy)
             
             # Finding the ratio (pi_theta / pi_theta__old):
             ratios = torch.exp(logprobs - old_logprobs.detach()).to(self.device)

@@ -27,7 +27,7 @@ def test():
     memory = Memory()
     player_agent = PlayerAgent(state_dim, action_dim, n_latent_var, device)
     
-    player_agent.policy.load_state_dict(torch.load(directory+filename),strict=False)
+    player_agent.policy.load_state_dict(torch.load(directory+filename, map_location=device),strict=False)
     
     for ep in range(1, n_episodes+1):
         ep_reward = 0

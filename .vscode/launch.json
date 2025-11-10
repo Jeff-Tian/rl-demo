@@ -9,7 +9,7 @@
             "name": "Python Debugger: Module",
             "type": "debugpy",
             "request": "launch",
-            "module": "lunar_launcher_rl.app"
+            "module": "lunar_launcher_rl.train"
         }
     ]
 }

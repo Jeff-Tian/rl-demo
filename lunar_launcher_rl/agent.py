@@ -29,7 +29,7 @@ class PlayerAgent:
     def evaluate(self, state, action, policy=None):
         action_probs = self.policy.action_layer(state)
         
-        policy = self.policy if policy is None else policy
+        # policy = self.policy if policy is None else policy
         
         # Categorical代表随机策略
         dist = Categorical(action_probs)
