@@ -1,5 +1,4 @@
 import gymnasium as gym
-from .memory import Memory
 import torch
 from .agent import PlayerAgent
 from .device import default_device
@@ -24,7 +23,6 @@ def test():
     filename = "PPO_{}.pth".format(env_name)
     directory = "./models/"
 
-    memory = Memory()
     player_agent = PlayerAgent(state_dim, action_dim, n_latent_var, device)
 
     player_agent.policy.load_state_dict(
@@ -35,7 +33,7 @@ def test():
         ep_reward = 0
         state, _ = env.reset()
         for t in range(max_timesteps):
-            action = player_agent.act(state, memory)
+            action = player_agent.act(state)
             observation, reward, terminated, truncated, info = env.step(action)
             state = observation
 

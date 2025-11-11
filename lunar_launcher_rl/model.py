@@ -10,9 +10,9 @@ class ActorCritic(nn.Module):
         # actor
         self.action_layer = nn.Sequential(
             nn.Linear(state_dim, n_latent_var),
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Linear(n_latent_var, n_latent_var),
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Linear(n_latent_var, action_dim),
             nn.Softmax(dim=-1),
         )
@@ -20,9 +20,9 @@ class ActorCritic(nn.Module):
         # critic
         self.value_layer = nn.Sequential(
             nn.Linear(state_dim, n_latent_var),
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Linear(n_latent_var, n_latent_var),
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Linear(n_latent_var, 1),
         )
 

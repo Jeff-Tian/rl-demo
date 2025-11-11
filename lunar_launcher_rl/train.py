@@ -58,7 +58,7 @@ def main():
 
             # Running policy_old:
             # 得到老状态的
-            action = agent.act(state, memory)
+            action = agent.attempt(state, memory)
             observation, reward, terminated, truncated, info = env.step(
                 action
             )  # 得到（新的状态，奖励，是否终止，额外的调试信息）
